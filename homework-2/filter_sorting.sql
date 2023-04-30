@@ -10,16 +10,18 @@ FROM orders
 ORDER BY ship_city, ship_country
 
 -- 3. сколько дней в среднем уходит на доставку товара в Германию (таблица orders, колонки order_date, shipped_date, ship_country)
-select avg(shipped_date - order_date)
-from orders
-where ship_country = 'Germany'
+SELECT avg(shipped_date - order_date) AS avg_delivery
+FROM orders
+WHERE ship_country = 'Germany'
 
 -- 4. минимальную и максимальную цену среди продуктов, не снятых с продажи (таблица products, колонки unit_price, discontinued не равно 1)
-select max(unit_price), min(unit_price)
-from products
-where discontinued = 0
+SELECT max(unit_price) AS max_unit_price,
+       min(unit_price) AS min_unit_price
+FROM products
+WHERE discontinued = 0
 
 -- 5. минимальную и максимальную цену среди продуктов, не снятых с продажи и которых имеется не меньше 20 (таблица products, колонки unit_price, units_in_stock, discontinued не равно 1)
-select max(unit_price), min(unit_price)
-from products
-where discontinued = 0 and units_in_stock >= 20
+SELECT max(unit_price) AS max_unit_price,
+       min(unit_price) AS min_unit_price
+FROM products
+WHERE discontinued = 0 AND units_in_stock >= 20
