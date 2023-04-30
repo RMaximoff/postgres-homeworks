@@ -23,3 +23,4 @@ for i in queries:
         connect.commit()
 
 connect.close()
+
